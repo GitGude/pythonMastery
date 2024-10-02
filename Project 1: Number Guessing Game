@@ -1,0 +1,119 @@
+# Project 1: Number Guessing Game
+
+Objective:
+Create a simple number guessing game where the computer randomly selects a number, and the user has to guess it. The program should provide hints, such as "higher" or "lower," after each guess.
+
+Instructions
+Step 1: Set Up the Environment
+Open your preferred Python development environment (IDE) or a simple code editor like VS Code.
+Create a new Python file called number_guessing_game.py.
+Step 2: Import Libraries
+You need the random library to generate a random number. Import it at the top of your script:
+python
+Copy code
+import random
+
+
+Step 3: Generate a Random Number
+Use the randint() function from the random library to select a random number between 1 and 100. Store it in a variable called secret_number.
+python
+Copy code
+secret_number = random.randint(1, 100)
+
+
+Step 4: Create the Game Loop
+Create a while loop that will continue running until the user guesses the number correctly.
+Prompt the user to enter their guess using the input() function.
+python
+Copy code
+while True:
+    guess = int(input("Guess the number between 1 and 100: "))
+
+
+Step 5: Implement Guess Comparison
+Inside the loop, compare the user's guess to the secret_number.
+Provide feedback using if, elif, and else statements:
+If the guess is lower than the secret_number, print: "Higher!"
+If the guess is higher than the secret_number, print: "Lower!"
+If the guess matches the secret_number, print: "Congratulations! You've guessed the number!" and break out of the loop.
+python
+Copy code
+if guess < secret_number:
+    print("Higher!")
+elif guess > secret_number:
+    print("Lower!")
+else:
+    print("Congratulations! You've guessed the number!")
+    break
+
+
+Step 6: Add a Counter
+Add a counter to track the number of attempts the user has made.
+Initialize the counter before the loop:
+python
+Copy code
+attempts = 0
+
+
+Increment the counter each time the user makes a guess:
+python
+Copy code
+attempts += 1
+
+
+After the user guesses the number correctly, display the number of attempts taken:
+python
+Copy code
+print(f"It took you {attempts} attempts to guess the number.")
+
+
+Step 7: Provide Option to Play Again
+After the user guesses the number, ask if they want to play again.
+If the answer is yes, generate a new random number and reset the counter. If not, exit the game.
+python
+Copy code
+play_again = input("Do you want to play again? (yes/no): ").lower()
+if play_again == 'yes':
+    secret_number = random.randint(1, 100)
+    attempts = 0
+else:
+    print("Thank you for playing!")
+    break
+
+
+Step 8: Final Code
+Put it all together, and your final code should look like this:
+python
+Copy code
+import random
+
+# Step 1: Generate a random number
+secret_number = random.randint(1, 100)
+attempts = 0
+
+# Step 2: Game loop
+while True:
+    # Prompt user for input and convert to integer
+    guess = int(input("Guess the number between 1 and 100: "))
+    attempts += 1
+
+    # Provide feedback
+    if guess < secret_number:
+        print("Higher!")
+    elif guess > secret_number:
+        print("Lower!")
+    else:
+        print(f"Congratulations! You've guessed the number in {attempts} attempts.")
+        
+        # Step 3: Play again or exit
+        play_again = input("Do you want to play again? (yes/no): ").lower()
+        if play_again == 'yes':
+            secret_number = random.randint(1, 100)
+            attempts = 0
+        else:
+            print("Thank you for playing!")
+            break
+
+Step 9: Run and Test
+Run the script in your Python environment and test the game by making a few guesses.
+Ensure that the feedback provided is accurate and the game behaves as expected when the correct number is guessed.
